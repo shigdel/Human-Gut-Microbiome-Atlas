@@ -1,11 +1,6 @@
 cat("\f")
 rm(list = ls())
 
-
-setwd("C:/Users/rsh001/OneDrive - University of Bergen/COST/HGA")
-
-
-
 library("ggplot2"); packageVersion("ggplot2")
 library(tidyr)
 library(mia)
