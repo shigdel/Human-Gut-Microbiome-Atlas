@@ -1,10 +1,8 @@
 
+ # Human Gut Microbiome Atlas 
+ [HGMA](https://www.microbiomeatlas.org/)
           
-        Human Gut Microbiome Atlas data**  (https://www.microbiomeatlas.org/)
-       
-       
-     Introduction
-      
+          
 - The Human Gut Microbiome Atlas (HGMA) provides i) quantitative information of global shotgun metagenomics of human gut microbiome ii) function/phenotype information of the human gut-associated metagenomic species pan-genomes (MSP) and iii) provide global map of human gut microbiome. Global shotgun metagenomics of normal human gut microbiome from 18 countries are presented with i) species abundance, ii) gene richness and iii) enterotypes. In addition, comprehensive analysis enabled the identification of species enriched/depleted in 20 different diseases with functions/phenotype of respective species, detailing the dysbiosis in gut microbiome composition.
 
 - Geography
