@@ -1,3 +1,5 @@
+setwd("C:/Users/rsh001/OneDrive - University of Bergen/COST/git_crc/Human-Gut-Microbiome-Atlas/data")
+
 cat("\f")
 rm(list = ls())
 
@@ -13,12 +15,24 @@ library(ape)
 
 samples_df <- read.csv(file ="HGMA.web.metadata.csv", 
                        header = TRUE)
+ls (samples_df)
+str (samples_df)
+
+samples_df$type <- as.factor(samples_df$type)
+samples_df$subtype <- as.factor(samples_df$subtype)
+samples_df$Gender <- as.factor(samples_df$Gender)
+samples_df$Geography <- as.factor(samples_df$Geography)
+samples_df$Sequencer <- as.factor(samples_df$Sequencer)
+samples_df$enteroType <- as.factor(samples_df$enteroType)
 
 otu_mat <- read.csv(file ="HGMA.web.MSP.abundance.matrix.csv", 
                     header = TRUE)
 
 tax_mat <- read.table(file='IGC2.1989MSPs.taxo.tsv',sep = '\t', header = TRUE)
+ls (tax_mat)
 
+tax_mat <- tax_mat %>% 
+  rename(Class = class, Family= family, Genus = genus, Order =order, Phylum =phylum, Species = species)
 tree <- read.tree("IGC2.1990MSPs.nwk",text = NULL, tree.names = NULL, skip = 0,comment.char = "", keep.multi = FALSE)
 
 
@@ -30,7 +44,7 @@ tax_mat <- tax_mat %>%
 samples_df <- samples_df %>%
   tibble::column_to_rownames("sample.ID")
 
-tax_mat <- tax_mat[,c("phylum", "class", "order", "family", "genus","species" )]
+tax_mat <- tax_mat[,c("Phylum", "Class", "Order", "Family", "Genus","Species" )]
 se <- TreeSummarizedExperiment(assays = list(counts = otu_mat[,rownames(samples_df)]),
                                colData = samples_df,
                                rowData = tax_mat[rownames(otu_mat),])
@@ -50,4 +64,6 @@ tse
 
 common.nodes <- intersect(rownames(tse), rowTree(tse)$tip.label)
 tse <- TreeSummarizedExperiment::subsetByLeaf(x = tse, rowLeaf = common.nodes, updateTree = TRUE)
-
+colData(tse)
+sort(table(colData(tse)$Age))
+colData(tse)$age <- colData(tse)$Age
