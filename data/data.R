@@ -1,4 +1,4 @@
-setwd("C:/Users/rsh001/OneDrive - University of Bergen/COST/git_crc/Human-Gut-Microbiome-Atlas/today/Human-Gut-Microbiome-Atlas/data")
+
 
 "data/HGA"
 
